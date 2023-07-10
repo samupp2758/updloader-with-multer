@@ -1,0 +1,35 @@
+{
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "multer": "^1.4.5-lts.1",
+    "path": "^0.12.7",
+    "prompt-sync": "^4.2.0",
+    "railsware-nodejs-testtask": "^1.0.0",
+    "tsc": "^2.0.4",
+    "typescript": "^5.1.6",
+    "rimraf": "^5.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rimraf ./build && tsc",
+    "start": "npm run build && node build/server.js",
+    "start:dev": "npx nodemon"
+  },
+  "name": "updloader-with-multer",
+  "version": "1.0.0",
+  "description": "code created to solve a team work problem of file sharing",
+  "main": "server.ts",
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/body-parser": "^1.19.2",
+    "@types/express": "^4.17.17",
+    "@types/method-override": "^0.0.32",
+    "@types/multer": "^1.4.7",
+    "@types/pg": "^8.10.2",
+    "nodemon": "^3.0.0",
+    "ts-node": "^10.9.1"
+  },
+  "type": "commonjs"
+}

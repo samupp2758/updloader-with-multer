@@ -1,0 +1,82 @@
+<html>
+  <head>
+    <title>File Manager</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>File Upload</h1>
+      <form id="form" action="/upload" method="post">
+        <div class="input-group">
+          <label for="files">Select files</label>
+          <input id="files" type="file" multiple />
+        </div>
+        <button class="submit-btn" type="submit">Upload</button>
+      </form>
+    </div>
+    <span id="tuame">Envie Agora!</span>
+    <br />
+    <br />
+    <br />
+    <p>Files</p>
+    <div id="_files_"></div>
+    <script>
+      // script.js
+      const form = document.getElementById("form");
+
+      form.addEventListener("submit", submitForm);
+
+      function submitForm(e) {
+        e.preventDefault();
+        const files = document.getElementById("files");
+        const formData = new FormData();
+        for (let i = 0; i < files.files.length; i++) {
+          formData.append("files", files.files[i]);
+        }
+        span = document.getElementById("tuame");
+        span.innerHTML = "";
+        txt = document.createTextNode("enviando....");
+        span.appendChild(txt);
+        fetch("/upload", {
+          method: "POST",
+          body: formData,
+          headers: {},
+        })
+          .then((response) => response.json())
+          .then((res) => {
+            span = document.getElementById("tuame");
+            span.innerHTML = "";
+            txt = document.createTextNode(res);
+            span.appendChild(txt);
+            setTimeout(()=>{
+              location.reload();
+            },100)
+          })
+          .catch((err) => ("Error occured", err));
+
+      }
+
+      function list() {
+        list = document.getElementById("_files_");
+        fetch("/list", {
+          method: "GET",
+          headers: {},
+        })
+          .then((response) => response.json())
+          .then((res) => {
+            final = "";
+            for (var i = 0; i < res.length; i++) {
+              final +=
+                "<p><a href='/get/" +
+                res[1] +
+                "' download>" +
+                res[i] +
+                "</a></p>\n";
+            }
+            list.innerHTML = final;
+          })
+          .catch((err) => ("Error occured", err));
+      };
+      list();
+    </script>
+  </body>
+</html>

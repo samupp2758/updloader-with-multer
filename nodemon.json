@@ -1,0 +1,7 @@
+{
+    "watch": ["./"],
+    "ext": ".ts,.js,.json",
+    "ignore": [],
+    "exec": "npx ts-node --esm server.ts",
+    "start:dev": "npx nodemon"
+  }
