@@ -7,5 +7,3 @@ So I created a nodejs/express/multer server that would provide a html page where
 
 ## Improvements
 Add a download file tree where my coworker would be able to get the files that I want him to download.
-
-## Usage
